@@ -3,6 +3,7 @@ require("dotenv").config();
 const fs = require("fs");
 const express = require("express");
 const bodyParser = require("body-parser");
+// Import auth routes here
 
 var port = process.env.BACKEND_PORT;
 
@@ -14,6 +15,8 @@ app.use(async (req, res, next) => {
   console.log(`\nEndpoint Hit: ${req.originalUrl}\n`);
   next();
 });
+
+// Use auth routes here
 
 if (process.env.NODE_ENV == "production") {
   // This sets the options for https so that it finds the ssl certificates
