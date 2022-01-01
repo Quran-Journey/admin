@@ -22,7 +22,10 @@
   "homepage": "https://github.com/Quran-Journey/admin#readme",
   "dependencies": {
     "dotenv": "^10.0.0",
-    "express": "^4.17.2",
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "swagger-inline": "^5.0.1",
     "jest": "^27.4.5"
   }
 }
