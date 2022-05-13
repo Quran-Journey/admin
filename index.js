@@ -3,7 +3,10 @@ require("dotenv").config();
 const fs = require("fs");
 const express = require("express");
 const bodyParser = require("body-parser");
-// Import auth routes here
+
+import { initializeApp } from 'firebase/app'; 
+import { getAnalytics } from "firebase/analytics";
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 var port = process.env.BACKEND_PORT;
 
@@ -16,7 +19,23 @@ app.use(async (req, res, next) => {
   next();
 });
 
-// Use auth routes here
+// firebaseConfig safe to include on client side 
+const firebaseConfig = {
+  apiKey: "AIzaSyAy_CLaAdFbgQDvSyLL5TNMT8C7am0D8YA",
+  authDomain: "quran-journey-1fd78.firebaseapp.com",
+  projectId: "quran-journey-1fd78",
+  storageBucket: "quran-journey-1fd78.appspot.com",
+  messagingSenderId: "796605473866",
+  appId: "1:796605473866:web:85377ab12c380f6095b2b3",
+  measurementId: "G-GP67NYJ27K"
+};
+
+const firebase_app = initializeApp(firebaseConfig); // create Firebase app that stores configuration of project
+const auth = getAuth(firebaseConfig);
+const db = getFirestore(firebaseConfig);
+const analytics = getAnalytics(firebase_app);
+
+
 
 if (process.env.NODE_ENV == "production") {
   // This sets the options for https so that it finds the ssl certificates
